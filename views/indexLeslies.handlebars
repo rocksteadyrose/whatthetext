@@ -1,0 +1,273 @@
+<head>
+    <script type="text/javascript">
+
+        if (DYN_WEB.Scroll_Div.isSupported()) {
+
+            DYN_WEB.Event.domReady(function () {
+                var wndo = new DYN_WEB.Scroll_Div('wn', 'lyr');
+                wndo.makeSmoothAuto({ axis: 'v', bRepeat: true, repeatId: 'rpt', speed: 20, bPauseResume: true });
+
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/" class="brandtitle brand-logo">
+                <img class="logo" src="assets/img/logo.png">
+            </a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="left hide-on-med-and-down">
+                <li>
+                    <a href="/ew">
+                        <img class="ewemoji" src="assets/img/emojis/ewemoji.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="/bff">
+                        <img class="bffsemoji" src="assets/img/emojis/bffs.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="/lol">
+                        <img class="lolemoji" src="assets/img/emojis/lolemoji.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="/nsfw">
+                        <img class="nsfwemoji" src="assets/img/emojis/nsfwemoji.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="/fail">
+                        <img class="failemoji" src="assets/img/emojis/failemoji.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="/wtfam">
+                        <img class="wtfemoji" src="assets/img/emojis/wtfemoji.png">
+                    </a>
+                </li>
+            </ul>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="/halloffame">
+                        <img class="fameemoji" src="assets/img/emojis/fameemoji2.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="/hallofshame">
+                        <img class="shameemoji" src="assets/img/emojis/shameemoji2.png">
+                        </i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li>
+            <a href="/ew">EW</a>
+        </li>
+        <li>
+            <a href="/bff">BFF</a>
+        </li>
+        <li>
+            <a href="/lol">LOL</a>
+        </li>
+        <li>
+            <a href="/nsfw">NSFW</a>
+        </li>
+        <li>
+            <a href="/fail">FAIL</a>
+        </li>
+        <li>
+            <a href="/wtfam">WTFam</a>
+        </li>
+        <li>
+            <a href="/halloffame">Hall Of Fame</a>
+        </li>
+        <li>
+            <a href="/hallofshame">Hall Of Shame</i>
+            </a>
+        </li>
+    </ul>
+
+    <div class="wrapper">
+        <fb:login-button id="fb-btn" scope="public_profile,email" onlogin="checkLoginState();">
+        </fb:login-button>
+        <div class="row tabwrapperdiv">
+            <div class="col s12 m6 l6 xl2 tabwrapper">
+                <ul class="tabs">
+                    <li class="tab col s6 m6 l4">
+                        <a class="active light-blue-text" href="#signintab">Sign In</a>
+                    </li>
+                    <li class="tab col s6 m6 l4">
+                        <a class="light-blue-text" href="#signuptab">Sign Up</a>
+                    </li>
+                    <div class="indicator indigo darken-4" style="z-index:1"></div>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m4 l4 welcomebox card">
+                <div class="card-content black-text">
+                    <div id="signintab" class="signin">
+                        <span class="welcometext">"What The Text?!" are you waiting for? Sign in now!</span>
+                        <form class="signinform col s12 m12" method="post" action="/signin"></form>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input name='username' id="icon_prefix email" type="text" class="validate">
+                                <label for="icon_prefix email">Your Username</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">lock</i>
+                                <input name='password' id="icon_prefix password" type="text" class="validate">
+                                <label for="icon_prefix password">Your Password</label>
+                            </div>
+                        </div>
+                        <button data-target="modalsignin" type="submit" class="btn btn-primary modal-trigger loginbutton light-blue lighten-2">Login</button>
+                        </form>
+
+                        <div class="signinoptions">
+                            OR
+                            <br>
+                            <div class="socialholder">
+                                <img class="socialicons fbicon" src="assets/img/fb.png" alt="facebookicon">
+                                <img class="socialicons igicon" src="assets/img/ig.png" alt="instagramicon">
+                                <img class="socialicons twicon" src="assets/img/tw.png" alt="twittericon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="signuptab" class="signup">
+                    <div class="jointext">OMG! You're joining?! It's the TEXT day ever!</div>
+                    <form class="signupform col s12 m12" id="profile">
+                        <form class="signupform col s12 col m12" id="profile" method="post" action="/signup">
+                            <div class="row">
+                                <div class="input-field col s12 emailform">
+                                    <i class="material-icons prefix">email</i>
+                                    <input name='email' id="icon_prefix" type="text" class="validate new-email">
+                                    <label for="icon_prefix email">Your Email Address</label>
+                                </div>
+                            </div>
+                            {{!--
+                            <div class="row">
+                                <div class="input-field col s12 usernameform">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input id="icon_prefix username2" type="text" class="validate">
+                                    <label for="icon_prefix username2">Pick A Username</label>
+                                </div>
+                            </div> --}}
+                            <div class="row">
+                                <div class="input-field col s12 passwordform">
+                                    <i class="material-icons prefix">lock</i>
+                                    <input name='password' id="icon_prefix" type="text" class="validate new-password">
+                                    <label for="icon_prefix password2">Pick A Password</label>
+                                </div>
+                            </div>
+                            {{!--
+                            <div class="row">
+                                <div class="input-field col s12 repeatpassword">
+                                    <i class="material-icons prefix">lock</i>
+                                    <input id="icon_prefix password3" type="text" class="validate">
+                                    <label for="icon_prefix password3">Re-type password</label>
+                                </div>
+                            </div> --}}
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">
+                                    <span id="rememberme">Remember me</span>
+                                </label>
+                            </div>
+                            <button data-target="modalsignup" type="submit" class="modal-trigger btn btn-primary signupbutton light-blue lighten-2">Sign Up</button>
+                        </form>
+
+                        <div class="signinoptionssignup">
+                            OR
+                            <br>
+                            <div class="socialholdersignup">
+                                <img class="socialicons fbicon" src="assets/img/fb.png">
+                                <img class="socialicons igicon" src="assets/img/ig.png">
+                                <img class="socialicons twicon" src="assets/img/tw.png">
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <div class="col s12 m7 l7 aboutsite right card">
+                <div class="card-content black-text">
+                    <img class="longlogo" src="assets/img/logolong.png" alt="logo">
+                    <p>What The Text?! is an online community where users can come together and share their funniest, craziest,
+                        and most 'What The Text?!'-worthy conversations.</p>
+
+                    <div class="trending">
+                        <h2 class="trendingtitle">TRENDING</h2>
+
+                        <div id="wn">
+                            <div id="lyr">
+                                <div>Here is some text for vertical continuous scrolling. And some more for our demo. More, more,
+                                    more, and yet more. Here is some text for vertical continuous scrolling. And some more
+                                    for our demo. More, more, more, and yet more.</div>
+                                <div id="rpt">Here is some text for vertical continuous scrolling. And some more for our demo. More, more,
+                                    more, and yet more. Here is some text for vertical continuous scrolling. And some more
+                                    for our demo. More, more, more, and yet more. Here is some text for vertical continuous
+                                    scrolling. And some more for our demo. More, more, more, and yet more. Here is some text
+                                    for vertical continuous scrolling. And some more for our demo. More, more, more, and
+                                    yet more. Here is some text for vertical continuous scrolling. And some more for our
+                                    demo. More, more, more, and yet more. Here is some text for vertical continuous scrolling.
+                                    And some more for our demo. More, more, more, and yet more. Here is some text for vertical
+                                    continuous scrolling. And some more for our demo. More, more, more, and yet more. Here
+                                    is some text for vertical continuous scrolling. And some more for our demo. More, more,
+                                    more, and yet more. Here is some text for vertical continuous scrolling. And some more
+                                    for our demo. More, more, more, and yet more. Here is some text for vertical continuous
+                                    scrolling. And some more for our demo. More, more, more, and yet more. Here is some text
+                                    for vertical continuous scrolling. And some more for our demo. More, more, more, and
+                                    yet more. Here is some text for vertical continuous scrolling. And some more for our
+                                    demo. More, more, more, and yet more. Here is some text for vertical continuous scrolling.
+                                    And some more for our demo. More, more, more, and yet more. Here is some text for vertical
+                                    continuous scrolling. And some more for our demo. More, more, more, and yet more. Here
+                                    is some text for vertical continuous scrolling. And some more for our demo. More, more,
+                                    more, and yet more. Here is some text for vertical continuous scrolling. And some more
+                                    for our demo. More, more, more, and yet more.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        <div id="modalsignup" class="modal modal-close">
+            <div class="modal-content">
+                <h4>Thanks for signing up!</h4>
+            </div>
+        </div>
+
+        <div id="modalsignin" class="modal modal-close">
+            <div class="modal-content">
+                <h4>Thanks for signing in!</h4>
+            </div>
+        </div>
+
+    </div>
+    {{!--
+    <script type="text/javascript" src="/assets/javascript/index-logic.js"></script> --}}
+    <script type="text/javascript" src="/assets/javascript/materializejs.js"></script>
+    <script type="text/javascript" src="/assets/javascript/materialize.min.js"></script>
+    <script type="text/javascript" src="/assets/javascript/logic.js"></script>
+
+</body>
+
+</html>

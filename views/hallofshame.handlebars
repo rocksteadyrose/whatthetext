@@ -1,0 +1,194 @@
+<nav>
+    <div class="nav-wrapper">
+        <img class="userhometarget brandtitle brand-logo logo" src="assets/img/logo.png">
+        <a href="/userhome" data-target="mobile-demo" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
+        </a>
+        <ul class="left hide-on-med-and-down">
+            <li>
+                <img class="ewemoji ewtarget onuserhome" src="assets/img/emojis/ewemoji.png">
+            </li>
+            <li>
+                <img class="bffemoji bfftarget onuserhome" src="assets/img/emojis/bffs.png">
+            </li>
+            <li>
+                <img class="lolemoji loltarget onuserhome" src="assets/img/emojis/lolemoji.png">
+            </li>
+            <li>
+                <img class="nsfwemoji nsfwtarget onuserhome" src="assets/img/emojis/nsfwemoji.png">
+            </li>
+            <li>
+                <img class="failemoji failtarget onuserhome" src="assets/img/emojis/failemoji.png">
+            </li>
+            <li>
+                <img class="wtfamemoji wtfamtarget onuserhome" src="assets/img/emojis/wtfemoji.png">
+            </li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li>
+                <img class="fameemoji fametarget onuserhome" src="assets/img/emojis/fameemoji2.png">
+            </li>
+            <li>
+                <img class="shameemoji shametarget onuserhome" src="assets/img/emojis/shameemoji2.png">
+
+            </li>
+            <li>
+                <img class="door logouttarget onuserhome" src="assets/img/emojis/door.png">
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+    <li>
+        <a class="ewtarget">EW</i>
+        </a>
+    </li>
+    <li>
+        <a class="bfftarget">BFF</i>
+        </a>
+    </li>
+    <li>
+        <a class="loltarget">LOL</i>
+        </a>
+    </li>
+    <li>
+        <a class="nsfwtarget">NSFW</i>
+        </a>
+    </li>
+    <li>
+        <a class="failtarget">FAIL</i>
+        </a>
+    </li>
+    <li>
+        <a class="wtfamtarget">WTFam</i>
+        </a>
+    </li>
+    <li>
+        <a class="fametarget">Hall Of Fame</i>
+        </a>
+    </li>
+    <li>
+        <a class="shametarget">Hall Of Shame</i>
+        </a>
+    </li>
+    <li>
+        <a class="logouttarget">Sign Out</i>
+        </a>
+    </li>
+</ul>
+
+<div class="wrapper">
+    <div class="row">
+        <div class="col s6 m12 l12 hoscategory center-align center">
+            <img class="hoslong categorylogo" src="assets/img/emojis/hallofshamelong.png" alt="hallofshame logo">
+        </div>
+        <div class="row">
+            <h5 class="categorytext col xs12 center">Where we shame the most awk and cringeworthy texts, or basically any text where you can't stop saying... "WHAT
+                THE TEXT?!" </h5>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col s12 col m12 hostextsdiv">
+            <h6 class="categorytext center">HALL OF SHAME Texts Feed</h6>
+            <div class="hostexts categorytext center">
+                <h2>Coming soon!</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $('.fametarget').on('click', function (request, response) {
+            window.location = "/halloffame";
+
+        });
+        $('.shametarget').on('click', function (request, response) {
+            window.location = "/hallofshame";
+
+        });
+        $('.logouttarget').on('click', function (request, response) {
+            window.location = "/logout";
+
+        });
+
+        $('.userhometarget').on('click', function (request, response) {
+            window.location = "/userhome";
+        });
+
+        $('.loltarget').on('click', function (request, response) {
+            window.location = "/userhome";
+            $.get('/api/lol')
+                .then((response) => {
+                    $('.everyonestextsdiv').empty();
+                    for (var i = 0; i < response.length; i++) {
+                        var lolElem = $('<a data-textId=' + response[i].id + 'href="/textfocus/' + response[i].id + '"><img src="' + response[i].image + '"></a>');
+                        $('.everyonestextsdiv').prepend(lolElem);
+                    }
+                });
+        });
+        $('.ewtarget').on('click', function (request, response) {
+            window.location = "/userhome";
+            $.get('/api/ew')
+                .then((response) => {
+                    $('.everyonestextsdiv').empty();
+                    for (var i = 0; i < response.length; i++) {
+                        var ewElem = $('<a data-textId=' + response[i].id + 'href="/textfocus/' + response[i].id + '"><img src="' + response[i].image + '"></a>');
+                        $('.everyonestextsdiv').prepend(ewElem);
+                    }
+                });
+        });
+
+        $('.bfftarget').on('click', function (request, response) {
+            window.location = "/userhome";
+            $.get('/api/bff')
+                .then((response) => {
+                    $('.everyonestextsdiv').empty();
+                    for (var i = 0; i < response.length; i++) {
+                        var bffElem = $('<a data-textId=' + response[i].id + 'href="/textfocus/' + response[i].id + '"><img src="' + response[i].image + '"></a>');
+                        $('.everyonestextsdiv').prepend(bffElem);
+                    }
+                });
+        });
+
+        $('.nsfwtarget').on('click', function (request, response) {
+            window.location = "/userhome";
+            $.get('/api/nsfw')
+                .then((response) => {
+                    $('.everyonestextsdiv').empty();
+                    for (var i = 0; i < response.length; i++) {
+                        var nsfwElem = $('<a data-textId=' + response[i].id + 'href="/textfocus/' + response[i].id + '"><img src="' + response[i].image + '"></a>');
+                        $('.everyonestextsdiv').prepend(nsfwElem);
+                    }
+                });
+        });
+
+        $('.failtarget').on('click', function (request, response) {
+            window.location = "/userhome";
+            $.get('/api/fail')
+                .then((response) => {
+                    $('.everyonestextsdiv').empty();
+                    for (var i = 0; i < response.length; i++) {
+                        var failElem = $('<a data-textId=' + response[i].id + 'href="/textfocus/' + response[i].id + '"><img src="' + response[i].image + '"></a>');
+                        $('.everyonestextsdiv').prepend(failElem);
+                    }
+                });
+        });
+
+        $('.wtfamtarget').on('click', function (request, response) {
+            window.location = "/userhome";
+            $.get('/api/wtfam')
+                .then((response) => {
+                    $('.everyonestextsdiv').empty();
+                    for (var i = 0; i < response.length; i++) {
+                        var wtfamElem = $('<a data-textId=' + response[i].id + 'href="/textfocus/' + response[i].id + '"><img src="' + response[i].image + '"></a>');
+                        $('.everyonestextsdiv').prepend(wtfamElem);
+                    }
+                });
+        });
+    });
+</script>

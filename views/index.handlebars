@@ -1,0 +1,307 @@
+<head>
+    <script type="text/javascript">
+
+        if (DYN_WEB.Scroll_Div.isSupported()) {
+
+            DYN_WEB.Event.domReady(function () {
+                var wndo = new DYN_WEB.Scroll_Div('wn', 'lyr');
+                wndo.makeSmoothAuto({ axis: 'v', bRepeat: true, repeatId: 'rpt', speed: 10, bPauseResume: true });
+
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/" class="brandtitle brand-logo">
+                <img class="logo" src="assets/img/logo.png">
+            </a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="left hide-on-med-and-down">
+                <li>
+                    <img class="modal-trigger ewemoji onuserhome" data-target="modalbuttonclick" src="assets/img/emojis/ewemoji.png">
+                </li>
+                <li>
+                    <img class="modal-trigger bffemoji onuserhome" data-target="modalbuttonclick" src="assets/img/emojis/bffs.png">
+                </li>
+                <li>
+                    <img class="modal-trigger lolemoji onuserhome" data-target="modalbuttonclick" src="assets/img/emojis/lolemoji.png">
+                </li>
+                <li>
+                    <img class="modal-trigger nsfwemoji onuserhome" data-target="modalbuttonclick" src="assets/img/emojis/nsfwemoji.png">
+                </li>
+                <li>
+                    <img class="modal-trigger failemoji onuserhome" data-target="modalbuttonclick" src="assets/img/emojis/failemoji.png">
+                </li>
+                <li>
+                    <img class="modal-trigger wtfamemoji onuserhome" data-target="modalbuttonclick" src="assets/img/emojis/wtfemoji.png">
+                </li>
+            </ul>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <img class="modal-trigger fameemoji" data-target="modalbuttonclick" src="assets/img/emojis/fameemoji2.png">
+                </li>
+                <li>
+                    <img class="modal-trigger shameemoji" data-target="modalbuttonclick" src="assets/img/emojis/shameemoji2.png">
+                </li>
+                {{!--
+                <li>
+                    <a href="/logout">
+                        <img class="door modal-trigger onuserhome" data-target="modalsignout" src="assets/img/emojis/door.png">
+                    </a>
+                </li> --}}
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li>
+            <a class="modal-trigger" data-target="modalbuttonclick">EW</a>
+        </li>
+        <li>
+            <a class="modal-trigger" data-target="modalbuttonclick">BFF</a>
+        </li>
+        <li>
+            <a class="modal-trigger" data-target="modalbuttonclick">LOL</a>
+        </li>
+        <li>
+            <a class="modal-trigger" data-target="modalbuttonclick">NSFW</a>
+        </li>
+        <li>
+            <a class="modal-trigger" data-target="modalbuttonclick">FAIL</a>
+        </li>
+        <li>
+            <a class="modal-trigger" data-target="modalbuttonclick">WTFam</a>
+        </li>
+        <li>
+            <a class="modal-trigger" data-target="modalbuttonclick">Hall Of Fame</a>
+        </li>
+        <li>
+            <a class="modal-trigger" data-target="modalbuttonclick">Hall Of Shame</i>
+            </a>
+        </li>
+        {{!--
+        <li>
+            <a class="modal-trigger" data-target="modalsignout">Sign Out</i>
+            </a>
+        </li> --}}
+    </ul>
+
+    <div class="wrapper">
+        <fb:login-button id="fb-btn" scope="public_profile,email" onlogin="checkLoginState();">
+        </fb:login-button>
+
+        <div class="row">
+            <div class="col m6 l6 x6 left">
+                <img class="longlogo" src="assets/img/logolong.png" alt="logo">
+            </div>
+            <div class="aboutwhatthetext col s12 m6 l6 x6 right">
+                <p>What The Text?! is an online community where users can come together and share their funniest, craziest,
+                    and most 'What The Text?!'-worthy conversations.</p>
+            </div>
+        </div>
+        <div class="row tabwrapperdiv">
+            <div class="col s12 m6 l6 xl2 tabwrapper">
+                <ul class="tabs">
+                    <li class="tab col s6 m6 l4">
+                        <a class="active light-blue-text" href="#signintab">Sign In</a>
+                    </li>
+                    <li class="tab col s6 m6 l4">
+                        <a class="light-blue-text" href="#signuptab">Sign Up</a>
+                    </li>
+                    <div class="indicator indigo darken-4" style="z-index:1"></div>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col s12 m4 l4 welcomebox card">
+                <div class="card-content black-text">
+                    <div id="signintab" class="signin">
+                        <span class="welcometext">"What The Text?!" are you waiting for? Sign in now!</span>
+                        <form class="signinform col s12 m12" method="post" action="/signin">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input name='username' id="icon_prefix email" type="text" class="validate">
+                                    <label for="icon_prefix email">Your Username</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">lock</i>
+                                    <input name='password' id="icon_prefix password" type="password" class="validate">
+                                    <label for="icon_prefix password">Your Password</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary loginbutton light-blue lighten-2">Login</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="signuptab" class="signup">
+                    <div class="jointext">OMG! You're joining?! It's the TEXT day ever!</div>
+                    {{!--
+                    <form class="signupform col s12 m12" id="profile"> --}}
+                        <form class="signupform col s12 col m12" id="profile" method="post" action="/signup">
+                            <div class="row">
+                                <div class="input-field col s12 usernameform">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input name='username' id="icon_prefix username2" type="text" class="validate">
+                                    <label for="icon_prefix username2">Pick A Username</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12 passwordform">
+                                    <i class="material-icons prefix">lock</i>
+                                    <input name='password' id="icon_prefix" type="password" class="validate new-password">
+                                    <label for="icon_prefix password2">Pick A Password</label>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary signupbutton light-blue lighten-2">Sign Up</button>
+                        </form>
+                </div>
+            </div>
+
+            <div class="col s12 m7 l7 aboutsite right card">
+                <div class="card-content black-text">
+
+
+                    <div class="trending">
+                        <h2 class="trendingtitle">TRENDING</h2>
+
+                        <div id="wn">
+                            <div id="lyr">
+                                <div class="scrollingtexts">
+                                    <div>
+                                        <img src="/assets/uploads/1.png">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/2.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/3.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/4.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/5.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/1.png">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/2.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/3.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/4.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/5.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/1.png">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/2.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/3.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/4.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/5.jpg">
+                                    </div>
+                                </div>
+                                <div class="scrollingtexts" id="rpt">
+                                    <div>
+                                        <img src="/assets/uploads/1.png">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/2.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/3.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/4.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/5.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/1.png">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/2.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/3.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/4.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/5.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/1.png">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/2.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/3.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/4.jpg">
+                                    </div>
+                                    <div>
+                                        <img src="/assets/uploads/5.jpg">
+                                    </div>
+                                    What The Text?! is an online community where users can come together and share their funniest, craziest, and most 'What The
+                                    Text?!'-worthy conversations. 😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{!-- <div id="modalsignup" class="modal modal-close">
+                <div class="modal-content">
+                    <h4>Thanks for signing up! 😎</h4>
+                </div>
+            </div>
+
+            <div id="modalsignin" class="modal modal-close">
+                <div class="modal-content">
+                    <h4>Thanks for signing in! 😍</h4>
+                </div>
+            </div> --}}
+
+            <div id="modalbuttonclick" class="modal modal-close">
+                <div class="modal-content">
+                    <h4>YOOO, texter! Plzzz sign up or sign in and then click this button again. Kthxbye! 😜</h4>
+                </div>
+            </div>
+
+        </div>
+
+</body>
+
+</html>

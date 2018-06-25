@@ -1,0 +1,278 @@
+<nav>
+    <div class="nav-wrapper">
+        <img class="userhometarget brandtitle brand-logo logo" src="assets/img/logo.png">
+        <a href="/userhome" data-target="mobile-demo" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
+        </a>
+        <ul class="left hide-on-med-and-down">
+            <li>
+                <img class="ewemoji ewtarget onuserhome" src="assets/img/emojis/ewemoji.png">
+            </li>
+            <li>
+                <img class="bffemoji bfftarget onuserhome" src="assets/img/emojis/bffs.png">
+            </li>
+            <li>
+                <img class="lolemoji loltarget onuserhome" src="assets/img/emojis/lolemoji.png">
+            </li>
+            <li>
+                <img class="nsfwemoji nsfwtarget onuserhome" src="assets/img/emojis/nsfwemoji.png">
+            </li>
+            <li>
+                <img class="failemoji failtarget onuserhome" src="assets/img/emojis/failemoji.png">
+            </li>
+            <li>
+                <img class="wtfamemoji wtfamtarget onuserhome" src="assets/img/emojis/wtfemoji.png">
+            </li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li>
+                <img class="fameemoji fametarget onuserhome" src="assets/img/emojis/fameemoji2.png">
+            </li>
+            <li>
+                <img class="shameemoji shametarget onuserhome" src="assets/img/emojis/shameemoji2.png">
+
+            </li>
+            <li>
+                <li>
+                    <img class="door logouttarget onuserhome" src="assets/img/emojis/door.png">
+                    </a>
+                </li>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+    <li>
+        <a class="ewtarget">EW</i>
+        </a>
+    </li>
+    <li>
+        <a class="bfftarget">BFF</i>
+        </a>
+    </li>
+    <li>
+        <a class="loltarget">LOL</i>
+        </a>
+    </li>
+    <li>
+        <a class="nsfwtarget">NSFW</i>
+        </a>
+    </li>
+    <li>
+        <a class="failtarget">FAIL</i>
+        </a>
+    </li>
+    <li>
+        <a class="wtfamtarget">WTFam</i>
+        </a>
+    </li>
+    <li>
+        <a class="fametarget">Hall Of Fame</i>
+        </a>
+    </li>
+    <li>
+        <a class="shametarget">Hall Of Shame</i>
+        </a>
+    </li>
+    <li>
+        <a class="logouttarget">Sign Out</i>
+        </a>
+    </li>
+</ul>
+
+<div class="wrapper">
+    <div class="row">
+        <form id="updatetextform">
+            {{!-- method="put" enctype='multipart/form-data' action="/api/text/bla" --}}
+            <div class="col s4 col m4 textcaption left">
+                <textarea id='caption' type="text" class="form-control" placeholder="Type your caption here" rows="3" cols="10"></textarea>
+            </div>
+
+            <div class="col col s8 col m8 textupload right">Text screenshot goes here</div>
+
+            <div class="col s4 col m4 textcategoriesdiv left">Check the categories that best fit your text:
+                <div class="form-check textcategories">
+                    <p>
+                        <label>
+                            <input type="checkbox" class="ewcategory checkBoxCat" name='category' id="ew" />
+                            <span class="categorytext">EW</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="bffcategory checkBoxCat" name='category' id="bff" />
+                            <span class="categorytext">BFF</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="lolcategory checkBoxCat" name='category' id="lol" />
+                            <span class="categorytext">LOL</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="nsfwcategory checkBoxCat" name='category' id="nsfw" />
+                            <span class="categorytext">NSFW</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="failcategory checkBoxCat" name='category' id="fail" />
+                            <span class="categorytext">FAIL</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="wtfamcategory checkBoxCat" name='category' id="wtfam" />
+                            <span class="categorytext">WTFam</span>
+                        </label>
+                    </p>
+                </div>
+            </div>
+
+            <button class="btn btn-primary textuploadsubmit light-blue" type="submit">Submit</button>
+
+            {{!--
+            <div id="modalsubmit" class="modal modal-close">
+                <div class="modal-content">
+                    <h4>Thx for submitting ur text!</h4>
+                </div>
+            </div> --}}
+
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript" src="assets/javascript/uploadfile.js"></script>
+
+<script>
+    $(document).ready(() => {
+
+        $.get('/api/submit-text-img')
+            .then((response) => {
+                var textId = response.id
+                console.log("response.id on page load: " + textId)
+                var imageElem = $('<img src="' + response.image + '">')
+                $('.textupload').html(imageElem);
+
+                $("#updatetextform").on("submit", (event) => {
+                    event.preventDefault();
+
+                    if ($('#ew').prop('checked')) { var ewV = 1 } else { var ewV = 0 };
+                    if ($('#bff').prop('checked')) { var bffV = 1 } else { var bffV = 0 };
+                    if ($('#lol').prop('checked')) { var lolV = 1 } else { var lolV = 0 };
+                    if ($('#nsfw').prop('checked')) { var nsfwV = 1 } else { var nsfwV = 0 };
+                    if ($('#fail').prop('checked')) { var failV = 1 } else { var failV = 0 };
+                    if ($('#wtfam').prop('checked')) { var wtfamV = 1 } else { var wtfamV = 0 };
+
+                    var updatedText = {
+                        id: textId,
+                        caption: $("#caption").val(),
+                        ew: ewV,
+                        bff: bffV,
+                        lol: lolV,
+                        nsfw: nsfwV,
+                        fail: failV,
+                        wtfam: wtfamV,
+                    };
+                    console.log(updatedText);
+
+                    $.ajax('/api/submit-txt-img', {
+                        type: "PUT",
+                        data: updatedText
+                    })
+
+                    window.location.href = '/userhome';
+
+                })
+            })
+
+        $.get('/api/userhome')
+            .then((response) => {
+                for (var i = 0; i < response.length; i++) {
+                    var imageElem = $('<a data-textId=' + response[i].id + ' href="/textfocus/' + response[i].id + '"><img class="whatthetextimg" src="' + response[i].image + '"></a>' + '<br>');
+                    $('.everyonestextsdiv').prepend(imageElem);
+                }
+            });
+
+        $('.userhometarget').on('click', function (request, response) {
+            window.location = "/userhome";
+        });
+
+        $('.fametarget').on('click', function (request, response) {
+            window.location = "/halloffame";
+
+        });
+        $('.shametarget').on('click', function (request, response) {
+            window.location = "/hallofshame";
+
+        });
+        $('.logouttarget').on('click', function (request, response) {
+            window.location = "/logout";
+
+        });
+
+        $('.loltarget').on('click', function (request, response) {
+            window.location = "/userhome";
+            $.get('/api/lol')
+                .then((response) => {
+                    $('.everyonestextsdiv').empty();
+                    for (var i = 0; i < response.length; i++) {
+                        var lolElem = $('<a data-textId=' + response[i].id + 'href="/textfocus/' + response[i].id + '"><img src="' + response[i].image + '"></a>');
+                        $('.everyonestextsdiv').prepend(lolElem);
+                    }
+                });
+        });
+        $('.ewtarget').on('click', function (request, response) {
+            window.location = "/userhome";
+            $.get('/api/ew')
+                .then((response) => {
+                    $('.everyonestextsdiv').empty();
+                    for (var i = 0; i < response.length; i++) {
+                        var ewElem = $('<a data-textId=' + response[i].id + 'href="/textfocus/' + response[i].id + '"><img src="' + response[i].image + '"></a>');
+                        $('.everyonestextsdiv').prepend(ewElem);
+                    }
+                });
+        });
+
+        $('.bfftarget').on('click', function (request, response) {
+            window.location = "/userhome";
+            $.get('/api/bff')
+                .then((response) => {
+                    $('.everyonestextsdiv').empty();
+                    for (var i = 0; i < response.length; i++) {
+                        var bffElem = $('<a data-textId=' + response[i].id + 'href="/textfocus/' + response[i].id + '"><img src="' + response[i].image + '"></a>');
+                        $('.everyonestextsdiv').prepend(bffElem);
+                    }
+                });
+        });
+
+        $('.nsfwtarget').on('click', function (request, response) {
+            window.location = "/userhome";
+            $.get('/api/nsfw')
+                .then((response) => {
+                    $('.everyonestextsdiv').empty();
+                    for (var i = 0; i < response.length; i++) {
+                        var nsfwElem = $('<a data-textId=' + response[i].id + 'href="/textfocus/' + response[i].id + '"><img src="' + response[i].image + '"></a>');
+                        $('.everyonestextsdiv').prepend(nsfwElem);
+                    }
+                });
+        });
+
+        $('.failtarget').on('click', function (request, response) {
+            window.location = "/userhome";
+            $.get('/api/fail')
+                .then((response) => {
+                    $('.everyonestextsdiv').empty();
+                    for (var i = 0; i < response.length; i++) {
+                        var failElem = $('<a data-textId=' + response[i].id + 'href="/textfocus/' + response[i].id + '"><img src="' + response[i].image + '"></a>');
+                        $('.everyonestextsdiv').prepend(failElem);
+                    }
+                });
+        });
+
+        $('.wtfamtarget').on('click', function (request, response) {
+            window.location = "/userhome";
+            $.get('/api/wtfam')
+                .then((response) => {
+                    $('.everyonestextsdiv').empty();
+                    for (var i = 0; i < response.length; i++) {
+                        var wtfamElem = $('<a data-textId=' + response[i].id + 'href="/textfocus/' + response[i].id + '"><img src="' + response[i].image + '"></a>');
+                        $('.everyonestextsdiv').prepend(wtfamElem);
+                    }
+                });
+        });
+    });
+</script>

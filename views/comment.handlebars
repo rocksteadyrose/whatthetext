@@ -1,0 +1,306 @@
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=388344565010558&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    window.twttr = (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function (f) {
+            t._e.push(f);
+        };
+
+        return t;
+    }(document, "script", "twitter-wjs"));
+
+</script>
+
+<nav>
+    <div class="nav-wrapper">
+        <img class="userhometarget brandtitle brand-logo logo" src="../assets/img/logo.png">
+        <a href="/userhome" data-target="mobile-demo" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
+        </a>
+        <ul class="left hide-on-med-and-down">
+            <li>
+                <img class="ewemoji ewtarget onuserhome" src="../assets/img/emojis/ewemoji.png">
+            </li>
+            <li>
+                <img class="bffemoji bfftarget onuserhome" src="../assets/img/emojis/bffs.png">
+            </li>
+            <li>
+                <img class="lolemoji loltarget onuserhome" src="../assets/img/emojis/lolemoji.png">
+            </li>
+            <li>
+                <img class="nsfwemoji nsfwtarget onuserhome" src="../assets/img/emojis/nsfwemoji.png">
+            </li>
+            <li>
+                <img class="failemoji failtarget onuserhome" src="../assets/img/emojis/failemoji.png">
+            </li>
+            <li>
+                <img class="wtfamemoji wtfamtarget onuserhome" src="../assets/img/emojis/wtfemoji.png">
+            </li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li>
+                <img class="fameemoji fametarget onuserhome" src="../assets/img/emojis/fameemoji2.png">
+            </li>
+            <li>
+                <img class="shameemoji shametarget onuserhome" src="../assets/img/emojis/shameemoji2.png">
+
+            </li>
+            <li>
+                <li>
+                    <img class="door logouttarget onuserhome" src="../assets/img/emojis/door.png">
+                    </a>
+                </li>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+    <li>
+        <a class="ewtarget">EW</i>
+        </a>
+    </li>
+    <li>
+        <a class="bfftarget">BFF</i>
+        </a>
+    </li>
+    <li>
+        <a class="loltarget">LOL</i>
+        </a>
+    </li>
+    <li>
+        <a class="nsfwtarget">NSFW</i>
+        </a>
+    </li>
+    <li>
+        <a class="failtarget">FAIL</i>
+        </a>
+    </li>
+    <li>
+        <a class="wtfamtarget">WTFam</i>
+        </a>
+    </li>
+    <li>
+        <a class="fametarget">Hall Of Fame</i>
+        </a>
+    </li>
+    <li>
+        <a class="shametarget">Hall Of Shame</i>
+        </a>
+    </li>
+    <li>
+        <a class="logouttarget">Sign Out</i>
+        </a>
+    </li>
+</ul>
+
+<div class="wrapper">
+    <div class="row">
+        <div class="col col s12 col m7 clickedtextarea">
+            <div class="postedby">
+                Posted on
+                <span id="datepost"></span>
+            </div>
+            {{!-- screenshot goes below --}}
+            <div class="specifictext card">
+            </div>
+
+            <div class="caption"></div>
+        </div>
+
+        <div class="col s12 m5 commentsarea">
+            <div class="commentsonlysdiv">
+                <div class="comments">
+                </div>
+                <div class="date">
+                </div>
+            </div>
+
+            <div class="formandshare">
+                <form id="commentform">
+                    <div class="captiononlydiv">
+                        <textarea id='commentTxtArea' type="text" class="form-control" placeholder="Say something about it..." rows="3" cols="1"></textarea>
+                        <button class="btn waves-effect waves-light light-blue lighten-2 waves-green waves-ripple commentbutton modal-trigger" data-target="modalcomment"
+                            type="submit">Comment</button>
+                    </div>
+                </form>
+
+                {{!--
+                <div id="modalcomment" class="modal modal-close">
+                    <div class="modal-content">
+                        <h4>Thx for ur epic comment! 😄</h4>
+                    </div>
+                </div> --}}
+
+                <div class="textsharing">
+                    Sharing is caring!
+
+                    <div class="socialholder">
+                        <div class="fb-share-button" data-href="http://what-the-text.herokuapp.com/" data-layout="button" data-size="small" data-mobile-iframe="true">
+                            <a target="_blank" href="#geturl" class="fb-xfbml-parse-ignore">Share</a>
+                        </div>
+                        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=WHA%20THE%20TEXT%20is%20this?!">
+                            <img class="socialicons twicon" src="assets/img/tw.png">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+
+                var textId = window.location.pathname.split("/").pop();
+                console.log(textId);
+                $.get('/api/textcomments/' + textId)
+                    .then(function (response) {
+                        for (var i = 0; i < response.Comments.length; i++) {
+                            $('.comments').prepend('<strong>' + response.Comments[i].comment + '</strong><br><br>' + '<em>' + response.Comments[i].createdAt + '</em><br><br>');
+                        }
+                        var imageElem = $('<img class="commentdiv" src="' + response.image + '">')
+                        $('.specifictext').html(imageElem);
+                    });
+
+                $("#commentform").on("submit", function (event) {
+                    event.preventDefault();
+                    //window.location.href = '/userhome';
+                    var comment = {
+                        comment: $('#commentTxtArea').val(),
+                        userId: 20,
+                        textId: textId
+                    };
+                    $.ajax('/text/comments/create', {
+                        type: 'POST',
+                        data: comment
+                    })
+                        .then((response) => {
+                            var comment = response.comment;
+                            var date = response.createdAt;
+                            $('.comments').append('<strong>' + comment + '</strong><br><br>' + '<em>' + date + '</em><br><br>');
+                            $.get('/text/comments')
+                        });
+                    this.reset();
+                });
+
+                $.get('/api/submit-text-img')
+                    .then((response) => {
+                        var date = response.createdAt;
+                        var caption = response.caption;
+                        $('#datepost').append(date);
+                        $('.caption').append(caption);
+                    });
+
+                $.get('/api/userhome')
+                    .then((response) => {
+                        for (var i = 0; i < response.length; i++) {
+                            var imageElem = $('<a data-textId=' + response[i].id + ' href="/textfocus/' + response[i].id + '"><img class="whatthetextimg" src="' + response[i].image + '"></a>' + '<br>');
+                            $('.everyonestextsdiv').prepend(imageElem);
+                        }
+                    });
+
+                $('.fametarget').on('click', function (request, response) {
+                    window.location = "/halloffame";
+                });
+
+                $('.userhometarget').on('click', function (request, response) {
+                    window.location = "/userhome";
+                });
+
+                $('.shametarget').on('click', function (request, response) {
+                    window.location = "/hallofshame";
+                });
+
+                $('.logouttarget').on('click', function (request, response) {
+                    window.location = "/logout";
+                });
+
+                $('.loltarget').on('click', function (request, response) {
+                    window.location = "/userhome";
+                    $.get('/api/lol')
+                        .then((response) => {
+                            $('.everyonestextsdiv').empty();
+                            for (var i = 0; i < response.length; i++) {
+                                var lolElem = $('<a data-textId=' + response[i].id + 'href="/textfocus/' + response[i].id + '"><img src="' + response[i].image + '"></a>');
+                                $('.everyonestextsdiv').prepend(lolElem);
+                            }
+                        })
+                });
+
+                $('.ewtarget').on('click', function (request, response) {
+                    window.location = "/userhome";
+                    $.get('/api/ew')
+                        .then((response) => {
+                            $('.everyonestextsdiv').empty();
+                            for (var i = 0; i < response.length; i++) {
+                                var ewElem = $('<a data-textId=' + response[i].id + 'href="/textfocus/' + response[i].id + '"><img src="' + response[i].image + '"></a>');
+                                $('.everyonestextsdiv').prepend(ewElem);
+                            }
+                        })
+                });
+
+                $('.bfftarget').on('click', function (request, response) {
+                    window.location = "/userhome";
+                    $.get('/api/bff')
+                        .then((response) => {
+                            $('.everyonestextsdiv').empty();
+                            for (var i = 0; i < response.length; i++) {
+                                var bffElem = $('<a data-textId=' + response[i].id + 'href="/textfocus/' + response[i].id + '"><img src="' + response[i].image + '"></a>');
+                                $('.everyonestextsdiv').prepend(bffElem);
+                            }
+                        })
+                });
+
+                $('.nsfwtarget').on('click', function (request, response) {
+                    window.location = "/userhome";
+                    $.get('/api/nsfw')
+                        .then((response) => {
+                            $('.everyonestextsdiv').empty();
+                            for (var i = 0; i < response.length; i++) {
+                                var nsfwElem = $('<a data-textId=' + response[i].id + 'href="/textfocus/' + response[i].id + '"><img src="' + response[i].image + '"></a>');
+                                $('.everyonestextsdiv').prepend(nsfwElem);
+                            }
+                        })
+                });
+
+                $('.failtarget').on('click', function (request, response) {
+                    window.location = "/userhome";
+                    $.get('/api/fail')
+                        .then((response) => {
+                            $('.everyonestextsdiv').empty();
+                            for (var i = 0; i < response.length; i++) {
+                                var failElem = $('<a data-textId=' + response[i].id + 'href="/textfocus/' + response[i].id + '"><img src="' + response[i].image + '"></a>');
+                                $('.everyonestextsdiv').prepend(failElem);
+                            }
+                        })
+                });
+
+                $('.wtfamtarget').on('click', function (request, response) {
+                    window.location = "/userhome";
+                    $.get('/api/wtfam')
+                        .then((response) => {
+                            $('.everyonestextsdiv').empty();
+                            for (var i = 0; i < response.length; i++) {
+                                var wtfamElem = $('<a data-textId=' + response[i].id + 'href="/textfocus/' + response[i].id + '"><img src="' + response[i].image + '"></a>');
+                                $('.everyonestextsdiv').prepend(wtfamElem);
+                            }
+                        })
+                })
+            });
+
+
+        </script>
