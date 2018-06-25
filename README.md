@@ -7,12 +7,12 @@ View on Heroku <a href="http://what-the-text.herokuapp.com/">here</a>
 * Marcus Johnson
 
 # PROJECT DESCRIPTION:
-What The Text?! is an online community where users can come together and share their funniest, craziest, or most 'What The Text?!'-worthy conversations. These categories range from extremely funny, to not safe for work at all. 
-What The Text?! allows users to filter the category to either check the messages imported by other users, or submit the messages of their choice into the local community. The categories are as followed:
+What The Text?! is an online community where users can come together and share their funniest, craziest, and most 'What The Text?!'-worthy conversations. These categories range from extremely funny, to not safe for work at all. 
+What The Text?! allows users to filter the category to either check the messages imported by other users, or submit the messages of their choice into the local community. The categories are as follows:
 * LOL: The most HA - larious text ever.
 * BFF: Where Best Friends Forever text, forever.
 * WTFam: When you receive amazing texts from your fam.
-* EW: Those that put the “mess” in message.
+* EW: Those that put the “mess” in messages.
 * FAIL: A message that just didn’t make sense.
 * NSFW: Not Safe For Work, but so worth it.
 
